@@ -1,27 +1,27 @@
-﻿
+
 namespace OOP_laba1_RationalNumbers
 {
     public sealed class RationalNumbers
     {
-        public int numerator { get; private set; }
-        public int denominator { get; private set; }
+        public int Numerator { get; private set; }
+        public int Denominator { get; private set; }
 
         private void Reduction()
         {
-            if (numerator % denominator == 0)
+            if (Numerator % Denominator == 0)
             {
-                numerator /= denominator;
-                denominator = 1;
+                Numerator /= Denominator;
+                Denominator = 1;
             }
 
             else
             {
-                for (int i = 2; i <= Math.Min(Math.Abs(denominator), Math.Abs(numerator)); i++)
+                for (int i = 2; i <= Math.Min(Math.Abs(Denominator), Math.Abs(Numerator)); i++)
                 {
-                    if (denominator % i == 0 && numerator % i == 0)
+                    if (Denominator % i == 0 && Numerator % i == 0)
                     {
-                        numerator /= i;
-                        denominator /= i;
+                        Numerator /= i;
+                        Denominator /= i;
                         i--;
                     }
                 }
@@ -30,42 +30,43 @@ namespace OOP_laba1_RationalNumbers
 
         public override string ToString()
         {
-            if (numerator % denominator == 0)
-                return $"{numerator}";
+            if (Numerator % Denominator == 0)
+                return $"{Numerator}";
 
             else
-               return $"{numerator}/{denominator}";
+               return $"{Numerator}/{Denominator}";
         }
+
 
 
         public static RationalNumbers operator +(RationalNumbers obj1, RationalNumbers obj2)
         {
-               return new RationalNumbers(obj1.numerator * obj2.denominator + obj2.numerator * obj1.denominator, obj1.denominator * obj2.denominator);
+               return new RationalNumbers(obj1.Numerator * obj2.Denominator + obj2.Numerator * obj1.Denominator, obj1.Denominator * obj2.Denominator);
         }
 
         public static RationalNumbers operator -(RationalNumbers obj1, RationalNumbers obj2)
         {
-            return new RationalNumbers(obj1.numerator * obj2.denominator - obj2.numerator * obj1.denominator, obj1.denominator * obj2.denominator);
+            return new RationalNumbers(obj1.Numerator * obj2.Denominator - obj2.Numerator * obj1.Denominator, obj1.Denominator * obj2.Denominator);
         }
 
         public static RationalNumbers operator *(RationalNumbers obj1, RationalNumbers obj2)
         {
-                return new RationalNumbers(obj1.numerator * obj2.numerator, obj1.denominator * obj2.denominator);
+                return new RationalNumbers(obj1.Numerator * obj2.Numerator, obj1.Denominator * obj2.Denominator);
         }
 
         public static RationalNumbers operator /(RationalNumbers obj1, RationalNumbers obj2)
         {
-            return new RationalNumbers(obj1.numerator * obj2.denominator, obj1.denominator * obj2.numerator);
+            return new RationalNumbers(obj1.Numerator * obj2.Denominator, obj1.Denominator * obj2.Numerator);
         }
 
         public static RationalNumbers operator -(RationalNumbers obj1)
         {
-            return new RationalNumbers(obj1.numerator * -1, obj1.denominator);
+            return new RationalNumbers(obj1.Numerator * -1, obj1.Denominator);
         }
 
         public static bool operator >(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator / obj1.denominator > obj2.numerator / obj2.denominator)
+            if (obj1.Numerator / obj1.Denominator > obj2.Numerator / obj2.Denominator)
                 return true;
             else
                 return false;
@@ -73,7 +74,7 @@ namespace OOP_laba1_RationalNumbers
 
         public static bool operator <(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator / obj1.denominator < obj2.numerator / obj2.denominator)
+            if (obj1.Numerator / obj1.Denominator < obj2.Numerator / obj2.Denominator)
                 return true;
             else
                 return false;
@@ -81,7 +82,7 @@ namespace OOP_laba1_RationalNumbers
 
         public static bool operator ==(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator == obj2.numerator && obj1.denominator == obj2.denominator)
+            if (obj1.Numerator == obj2.Numerator && obj1.Denominator == obj2.Denominator)
                 return true;
             else
                 return false;
@@ -89,7 +90,7 @@ namespace OOP_laba1_RationalNumbers
 
         public static bool operator !=(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator == obj2.numerator && obj1.denominator == obj2.denominator)
+            if (obj1.Numerator == obj2.Numerator && obj1.Denominator == obj2.Denominator)
                 return false;
             else
                 return true;
@@ -97,7 +98,7 @@ namespace OOP_laba1_RationalNumbers
 
         public static bool operator >=(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator / obj1.denominator >= obj2.numerator / obj2.denominator)
+            if (obj1.Numerator / obj1.Denominator >= obj2.Numerator / obj2.Denominator)
                 return true;
             else
                 return false;
@@ -105,7 +106,7 @@ namespace OOP_laba1_RationalNumbers
 
         public static bool operator <=(RationalNumbers obj1, RationalNumbers obj2)
         {
-            if (obj1.numerator / obj1.denominator <= obj2.numerator / obj2.denominator)
+            if (obj1.Numerator / obj1.Denominator <= obj2.Numerator / obj2.Denominator)
                 return true;
             else
                 return false;
@@ -113,19 +114,19 @@ namespace OOP_laba1_RationalNumbers
 
 
 
-        public RationalNumbers(int Num, int Denom)
+        public RationalNumbers(int numerator, int denominator)
         {
-            if (Denom == 0)
+            if (denominator == 0)
                 throw new Exception("Знаменатель не может быть равен нулю :(");
 
-            if (Denom < 0)
+            if (denominator < 0)
             {
-                Denom *= -1;
-                Num *= -1;
+                denominator *= -1;
+                Numerator *= -1;
             }
 
-            numerator = Num; 
-            denominator = Denom;
+            Numerator = numerator; 
+            Denominator = denominator;
 
             Reduction();
         }
