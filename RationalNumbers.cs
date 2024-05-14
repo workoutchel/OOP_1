@@ -6,27 +6,18 @@ namespace OOP_laba1_RationalNumbers
         public int Numerator { get; private set; }
         public int Denominator { get; private set; }
 
-        private void Reduction()
-        {
-            if (Numerator % Denominator == 0)
+       private void Reduction()
+       {
+            for (int i = 2; i <= Math.Min(Math.Abs(Denominator), Math.Abs(Numerator)); i++)
             {
-                Numerator /= Denominator;
-                Denominator = 1;
-            }
-
-            else
-            {
-                for (int i = 2; i <= Math.Min(Math.Abs(Denominator), Math.Abs(Numerator)); i++)
+                if (Denominator % i == 0 && Numerator % i == 0)
                 {
-                    if (Denominator % i == 0 && Numerator % i == 0)
-                    {
-                        Numerator /= i;
-                        Denominator /= i;
-                        i--;
-                    }
+                    Numerator /= i;
+                    Denominator /= i;
+                    i--;
                 }
             }
-        }
+       }
 
         public override string ToString()
         {
