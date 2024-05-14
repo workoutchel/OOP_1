@@ -1,7 +1,4 @@
-using OOP_laba1;
-
-
-
+using OOP_laba1_RationalNumbers;
 
 
 namespace Tests
