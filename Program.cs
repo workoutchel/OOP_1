@@ -17,11 +17,11 @@ namespace OOP_laba1
             _value = value;
         }
 
-        public void Outputree()
+        public void Outputree(List<T> list)
         {
-            Console.WriteLine($"{_value.ToString()} ");
+            list.Add(_value);
 
-            if (list_reference == null || list_reference.Count == 0)
+            if (list_reference.Count == 0)
             {
                 return;
             }
